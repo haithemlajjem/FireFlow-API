@@ -39,7 +39,7 @@ FireFlow is a RESTful API for managing firewalls, policies, and rules. It provid
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/haithemlajjem/FireFlow-API.git
-   cd fireflow
+   cd FireFlow-API
 2. **Set Up Virtual Environment**
     ```bash
    poetry install
