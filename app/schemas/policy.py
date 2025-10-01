@@ -18,7 +18,7 @@ class PolicyOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
-# Flasgger Swagger definitions 
+# Flasgger Swagger definitions
 definitions = {
     "PolicyIn": {
         "type": "object",

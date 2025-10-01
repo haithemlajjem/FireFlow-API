@@ -11,6 +11,11 @@ from app.api.rules import bp as rules_bp
 from app.db import init_db
 from app.logger import configure_logging
 
+# Import definitions
+from app.schemas.firewall import definitions as firewall_definitions
+from app.schemas.policy import definitions as policy_definitions
+from app.schemas.rule import definitions as rule_definitions
+
 
 def create_app(test_config=None):
     """Flask app factory with Flasgger Swagger docs enabled and structured logging."""
@@ -37,7 +42,20 @@ def create_app(test_config=None):
     app.register_blueprint(rules_bp)
 
     # Swagger
-    Swagger(app)
+    swagger = Swagger(app)
+    swagger.template = {
+        "swagger": "2.0",
+        "info": {
+            "title": "FireFlow API",
+            "description": "API for managing firewalls, policies, and rules",
+            "version": "1.0.0",
+        },
+        "definitions": {
+            **firewall_definitions,
+            **policy_definitions,
+            **rule_definitions,
+        },
+    }
 
     @app.route("/")
     def index():
